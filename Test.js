@@ -134,7 +134,7 @@
 //! Flatmap Method
 // Combination of Map and Flat
 
-let array1 = [1,2,3,4,5];
-console.log("Array Before Flatmap Method: ", array1);
-let array2 = array1.flatMap(num=>{return num*2});
-console.log("Results after Flatmap Method: ", array2 );
+// let array1 = [1,2,3,4,5];
+// console.log("Array Before Flatmap Method: ", array1);
+// let array2 = array1.flatMap(num=>{return num*2});
+// console.log("Results after Flatmap Method: ", array2 );
