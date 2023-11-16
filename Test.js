@@ -138,3 +138,30 @@
 // console.log("Array Before Flatmap Method: ", array1);
 // let array2 = array1.flatMap(num=>{return num*2});
 // console.log("Results after Flatmap Method: ", array2 );
+
+
+// ------- Day 2 - 16/11/2023 --------
+//! Make a digital clock with Promise, Asyns, Awaits etc
+
+// const promise1 = ()=>{ return new Promise(function(resolve) { 
+//     setTimeout(()=>{
+//         return resolve(new Date());
+//     }, 1000);
+// })};
+
+// const main = async ()=>{
+//     while(true){
+//         // const p1 = await promise1();
+//         console.log(await promise1());
+//     }
+// };
+// main();
+
+//! Make a digital clock.
+
+// const main()=>{
+//     console.log(new Date());
+//     setTimeout(main, 1000);
+// }
+
+// main();
