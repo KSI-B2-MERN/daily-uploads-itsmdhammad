@@ -1,0 +1,15 @@
+const authController = require("../controllers/authController");
+const loginController = require("../controllers/loginController");
+const logoutController = require("../controllers/logoutController");
+const resetController = require("../controllers/resetController");
+
+
+
+const router = require("express").Router();
+
+router.post("/signUp", authController.signUp);
+router.get("/login", loginController.login);
+router.delete("/logout", logoutController.logout);
+router.put("/reset", resetController.reset);
+
+module.exports = router;
