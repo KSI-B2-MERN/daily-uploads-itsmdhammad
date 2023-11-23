@@ -3,7 +3,7 @@ const authService = require("../services/logoutService");
 module.exports = {
   logout: (req, res) => {
     try {
-      console.log("Request", req.query);
+      // console.log("Request", req.query);
       const serviceResponse = authService.logout();
       if (serviceResponse.response) {
         res.send({
