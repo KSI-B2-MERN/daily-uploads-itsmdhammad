@@ -14,20 +14,8 @@ module.exports = {
     try {
       const validate = await signUpSchema.validateAsync(req.body)
       console.log("Request", req.body);
-      const serviceResponse = authService.signUp();
-    //   if (serviceResponse.response) {
-    //     res.send({
-    //       response: serviceResponse.response,
-    //     });
-    //   }
-    //   res.send({
-    //     error: serviceResponse.error,
-    //   });
-    // } catch (error) {
-    //   res.send({
-    //     error: error,
-    //   });
-    // }
+      const serviceResponse = await authService.signUp(validate);
+
     if (serviceResponse.error) {
       res.send({
         error: serviceResponse.error,
@@ -43,3 +31,18 @@ module.exports = {
   },
 
 };
+
+
+    //   if (serviceResponse.response) {
+    //     res.send({
+    //       response: serviceResponse.response,
+    //     });
+    //   }
+    //   res.send({
+    //     error: serviceResponse.error,
+    //   });
+    // } catch (error) {
+    //   res.send({
+    //     error: error,
+    //   });
+    // }
