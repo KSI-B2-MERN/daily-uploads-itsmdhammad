@@ -1,36 +1,34 @@
 const sequelize = require("../../bin/dbConnection");
 const {Model, DataTypes} = require("sequelize");
 
-class USERS extends Model {}
+class OrderItems extends Model {}
 
-USERS.init({
-    userID: {
+OrderItems.init({
+    ItemID: {
         primaryKey: true,
         type: DataTypes.STRING(90),
     },
-    firstName: {  
+    ItemName: {
         type: DataTypes.STRING(34),
         allowNull: false,
     },
-    lastName: {
+    ItemSize: {
         type: DataTypes.STRING(34),
         allowNull: false,
     },
-    email: {
+    ItemColor: {
         type: DataTypes.STRING(34),
         allowNull: false,
-        unique: true,
     },
-    password: {
+    ItemPrice:{
         type: DataTypes.STRING(34),
         allowNull: false,
-        unique: true,
-    }
+    },
 },{
     sequelize,
     timestamps: true,
     paranoid: true,
-    modelName: "USERS",
+    modelName: "OrderItems",
 })
 
-module.exports = USERS;
+module.exports = OrderItems;
