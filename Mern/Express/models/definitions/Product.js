@@ -6,15 +6,12 @@ class PRODUCT extends Model {}
 PRODUCT.init({
     productId: {
         primaryKey: true,
-        type: DataTypes.INTEGER(),
+        type: DataTypes.INTEGER,
     },
     ProductName: {
         type: DataTypes.STRING(50),
         allowNull: false,
-    },
-    description: {
-        type: DataTypes.STRING(250),
-        allowNull: false,
+        unique: true,
     },
 },{
     sequelize,

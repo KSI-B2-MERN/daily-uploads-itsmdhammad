@@ -4,24 +4,16 @@ const {Model, DataTypes} = require("sequelize");
 class OrderItems extends Model {}
 
 OrderItems.init({
-    ItemID: {
+    OrderItemID: {
         primaryKey: true,
         type: DataTypes.STRING(90),
     },
-    ItemName: {
-        type: DataTypes.STRING(34),
+    OrderItemQuantity: {
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
-    ItemSize: {
-        type: DataTypes.STRING(34),
-        allowNull: false,
-    },
-    ItemColor: {
-        type: DataTypes.STRING(34),
-        allowNull: false,
-    },
-    ItemPrice:{
-        type: DataTypes.STRING(34),
+    OrderItemPrice:{
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
 },{

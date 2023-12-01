@@ -8,10 +8,7 @@ Order.init({
         primaryKey: true,
         type: DataTypes.STRING(90),
     },
-    TotalOrderPrice: {
-        type: DataTypes.STRING(90),
-        allowNull: false,
-    }
+    
 },{
     sequelize,
     timestamps: true,

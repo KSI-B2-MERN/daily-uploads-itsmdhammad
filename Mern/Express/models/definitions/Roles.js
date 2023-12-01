@@ -8,14 +8,11 @@ Roles.init({
         primaryKey: true,
         type: DataTypes.STRING(90),
     },
-    RoleName: {
+    Role: {
         type: DataTypes.STRING(34),
         allowNull: false,
+        unique: true,
     },
-    roleDescription: {
-        type: DataTypes.STRING(250),
-        allowNull: false,
-    }
 },{
     sequelize,
     timestamps: true,

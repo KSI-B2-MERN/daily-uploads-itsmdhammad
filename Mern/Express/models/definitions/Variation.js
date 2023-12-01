@@ -4,17 +4,18 @@ const {Model, DataTypes} = require("sequelize");
 class Variations extends Model {}
 
 Variations.init({
-    Size: {
-        type: DataTypes.STRING(10),
+    VariationID: {
+        primaryKey: true,
+        type: DataTypes.STRING(90),
     },
-    color: {  
-        type: DataTypes.STRING(34),
+    quantity: {  
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
     price: {
-        type: DataTypes.STRING(34),
+        type: DataTypes.INTEGER,
         allowNull: false,
-    }
+    },
 },{
     sequelize,
     timestamps: true,
