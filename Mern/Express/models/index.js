@@ -7,6 +7,7 @@ const VARIATION = require('./definitions/Variation');
 const CART = require('./definitions/Cart');
 const ORDERITEM = require('./definitions/OrderItems');
 const CARTITEM = require('./definitions/CartItems');
+const SESSION = require('./definitions/session');
 
 const models = {
     USERS,
@@ -17,6 +18,7 @@ const models = {
     CART,
     ORDERITEM,
     CARTITEM,
+    SESSION
 };
 
 //! Relations
@@ -25,6 +27,12 @@ const models = {
 
 USERS.hasOne(CART, {foreignKey: "userID"})
 CART.belongsTo(USERS, {foreignKey: "userID"})
+
+//! 1:1 Relations 
+// User-SESSION:
+
+USERS.hasOne(SESSION, { foreignKey: "userId" });
+SESSION.belongsTo(USERS, { foreignKey: "userId" });
 
 //! Relations
 //! 1:M Relations 

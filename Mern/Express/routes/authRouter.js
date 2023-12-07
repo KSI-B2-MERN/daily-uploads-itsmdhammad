@@ -8,7 +8,7 @@ const resetController = require("../controllers/resetController");
 const router = require("express").Router();
 
 router.post("/signUp", authController.signUp);
-router.get("/login", loginController.login);
+router.post("/login", loginController.login);
 router.get("/logout", logoutController.logout);
 router.get("/reset", resetController.reset);
 

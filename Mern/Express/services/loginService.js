@@ -1,16 +1,70 @@
 const authModel = require("../models/loginModel");
+const userModel = require("../models/userModel");
+const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
+const config = require("../config.json");
+const sessionModel = require("../models/sessionModel");
+const {v4: uuidV4} = require("uuid");
+
+
 
 module.exports = {
-  login: () => {
+  login: async (body) => {
     try {
-      const signUpResponse = authModel.login();
-      if (signUpResponse.reponse) {
+      const loginResponse = await userModel.getUserByEmail(body.email);
+      console.log("Login Response:", loginResponse);
+      if (loginResponse.error || !loginResponse.response) {
         return {
-          response: signUpResponse.reponse,
+          error: "invalid crediantials",
+        };
+      }
+
+      const login = await bcrypt.compare(
+        body.password,
+        loginResponse.response.dataValues.password
+      );
+      console.log("Login:", login);
+
+      if (!login) {
+        return {
+          error: "invalid credentails",
+        };
+      }
+
+      delete loginResponse.response.dataValues.password;
+      const token = jwt.sign(
+        loginResponse.response.dataValues,
+        config.jwt.secret,
+        {
+          expiresIn: "1h",
+        }
+      );
+
+      const session = await sessionModel.getSessionByUserId(
+        loginResponse.response.dataValues.userId
+      );
+
+      if (session) {
+        await sessionModel.deleteSession(
+          loginResponse.response.dataValues.userId
+        );
+      }
+
+      const sessionId = uuidV4();
+      const createdSession = await sessionModel.createSession(
+        token,
+        loginResponse.response.dataValues.userId,
+        sessionId
+      );
+      console.log("Created Session",createdSession);
+
+      if (!createdSession.response || createdSession.error) {
+        return {
+          error: "unable to login",
         };
       }
       return {
-        error: signUpResponse.error,
+        response: createdSession.response,
       };
     } catch (error) {
       return {

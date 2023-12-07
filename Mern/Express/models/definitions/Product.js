@@ -5,7 +5,7 @@ class PRODUCT extends Model {}
 
 PRODUCT.init({
     productId: {
-        primaryKey: true,
+    primaryKey: true,
         type: DataTypes.INTEGER,
     },
     ProductName: {

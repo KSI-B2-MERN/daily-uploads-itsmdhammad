@@ -1,0 +1,11 @@
+const userController = require("../controllers/userController");
+const router = require("express").Router();
+const middleware = require("../middleware");
+
+router.post("/createUser", userController.createUser);
+router.get("/getAllUsers", middleware.customer, userController.getAllUsers);
+router.delete("/deleteUser", userController.deletesUser);
+
+
+
+module.exports = router;
