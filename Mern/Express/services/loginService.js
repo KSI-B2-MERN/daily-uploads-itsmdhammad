@@ -12,10 +12,12 @@ module.exports = {
   login: async (body) => {
     try {
       const loginResponse = await userModel.getUserByEmail(body.email);
-      console.log("Login Response:", loginResponse);
+      console.log(loginResponse);
+      
+      // console.log("Login Response:", loginResponse.response.dataValues.userID);
       if (loginResponse.error || !loginResponse.response) {
         return {
-          error: "invalid crediantials",
+          error: "Login Response invalid crediantials",
         };
       }
 
@@ -27,7 +29,7 @@ module.exports = {
 
       if (!login) {
         return {
-          error: "invalid credentails",
+          error: "Login 2 invalid credentails",
         };
       }
 
@@ -41,14 +43,21 @@ module.exports = {
       );
 
       const session = await sessionModel.getSessionByUserId(
-        loginResponse.response.dataValues.userId
+        loginResponse.response.dataValues.userID
       );
 
-      if (session) {
+      if(session.error){
+        return {
+          error: "Session Model invalid Crediantials",
+        }
+      }
+      
+           if (session) {
         await sessionModel.deleteSession(
           loginResponse.response.dataValues.userId
         );
       }
+
 
       const sessionId = uuidV4();
       const createdSession = await sessionModel.createSession(

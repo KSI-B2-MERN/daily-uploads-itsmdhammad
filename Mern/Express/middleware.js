@@ -16,7 +16,7 @@ module.exports = {
         const session = await sessionModel.getSessionByUserId(data.userId);
         if (session.error || !session.response) {
           return res.send({
-            error: "Invalid request",
+            error: "UnAuthorized Error",
           });
         }
         const role = await userModel.getRoleByUserId(data.userId);
