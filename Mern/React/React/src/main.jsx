@@ -1,10 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+// import AuthLayout from './layouts/auth-layout'
+import AdminLayout from './layouts/admin-layout'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    {/* <AuthLayout /> */}
+    <AdminLayout />
+
+  </React.StrictMode>
 )
